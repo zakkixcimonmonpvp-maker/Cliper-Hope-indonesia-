@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07110c">
+<title>Kazedream | Cybersecurity Roadmap</title>
+<style>
+:root{--bg:#07110c;--panel:#112018;--line:#294633;--green:#a8ff45;--muted:#afc0b3;--white:#f2f8f2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 5% 0,#17452b 0,transparent 35%),var(--bg);color:var(--white);font:16px/1.6 system-ui,Arial,sans-serif}
+.wrap{width:min(1100px,calc(100% - 28px));margin:auto}header{padding:30px 0;border-bottom:1px solid var(--line)}
+.brand{font-weight:900;letter-spacing:.08em;color:var(--green)}.eyebrow{color:var(--green);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
+h1{font-size:clamp(2.2rem,7vw,4.4rem);line-height:1.04;margin:20px 0 12px}h1 span{color:var(--green)}
+p{color:var(--muted)}.lead{max-width:720px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
+button,a.btn{border:1px solid var(--line);background:#14271b;color:var(--white);padding:10px 16px;border-radius:99px;font-weight:700;cursor:pointer;text-decoration:none}
+button.primary,a.primary{background:var(--green);color:#0a150c;border-color:var(--green)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.stat,.card,.info,.progress{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:16px}
+.stat b{display:block;color:var(--green);font-size:1.5rem}.stat span{color:var(--muted);font-size:.85rem}
+section{padding:24px 0}.heading{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin-bottom:15px}
+h2{margin:0;font-size:1.7rem}.heading p{margin:4px 0 0}.search{background:var(--panel);color:white;border:1px solid var(--line);padding:11px 14px;border-radius:99px;min-width:230px}
+.bar{height:10px;background:#293a2d;border-radius:99px;overflow:hidden;margin:10px 0}.fill{height:100%;width:0;background:var(--green);transition:.2s}
+.roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.card{position:relative}.card.done{border-color:var(--green)}
+.top{display:flex;justify-content:space-between;align-items:center}.num{background:var(--green);color:#0a150c;border-radius:50%;width:34px;height:34px;display:grid;place-items:center;font-weight:900}
+.emoji{font-size:1.7rem}h3{margin:10px 0 5px}.card p{font-size:.9rem;margin:0 0 8px}.card ul{padding-left:19px;font-size:.88rem}.card li{margin:3px 0}
+.note{font-size:.78rem;color:#b9dcff;background:#122536;padding:8px 10px;border-radius:9px}
+.cardfoot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:13px}.check{font-size:.84rem;color:var(--muted)}input[type=checkbox]{accent-color:var(--green)}
+.more{border:0;background:none;color:var(--green);padding:5px}.empty{display:none;padding:20px;color:var(--muted);text-align:center}
+.specs{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.spec{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:14px}.spec p{font-size:.83rem;margin:4px 0}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}.info li{color:var(--muted);margin:5px 0}.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.term{background:#172a1d;border-radius:12px;padding:12px}.term b{color:var(--green);display:block}.term span{font-size:.83rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:24px 0 35px;color:var(--muted);font-size:.85rem}
+dialog{width:min(560px,calc(100% - 24px));background:#112018;color:white;border:1px solid var(--line);border-radius:18px;padding:22px}dialog::backdrop{background:#000b}dialog p,dialog li{color:var(--muted)}.close{float:right}
+@media(max-width:850px){.roadmap{grid-template-columns:repeat(2,1fr)}.specs{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.roadmap,.cols{grid-template-columns:1fr}.specs{grid-template-columns:repeat(2,1fr)}.terms{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:span 2}.search{width:100%}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="brand">KAZEDREAM / LEARNING HUB</div><div class="eyebrow">Beginner to specialist • Ethical learning</div>
+<h1>IT <span>Cybersecurity</span><br>Learning Roadmap</h1>
+<p class="lead">Panduan belajar bertahap untuk memahami komputer, jaringan, Linux, keamanan sistem, keamanan web, hingga memilih spesialisasi. Fokus pada praktik legal, lab pribadi, dan perlindungan sistem.</p>
+<div class="actions"><a class="btn primary" href="#roadmap">Mulai belajar ↓</a><button id="reset">Reset progres</button></div>
+<div class="stats"><div class="stat"><b>9 Tahap</b><span>Materi inti</span></div><div class="stat"><b>5 Jalur</b><span>Spesialisasi</span></div><div class="stat"><b id="count">0/9</b><span>Tahap selesai</span></div></div>
+</div></header>
+<main class="wrap">
+<section id="roadmap">
+<div class="heading"><div><h2>Roadmap belajar</h2><p>Pelajari berurutan dan centang tahap yang sudah kamu pahami.</p></div><input id="search" class="search" placeholder="Cari materi, mis. Linux..." type="search"></div>
+<div class="progress"><b>Progres belajarmu</b><div class="bar"><div id="fill" class="fill"></div></div><small id="progressText" style="color:var(--muted)">0% selesai</small></div>
+<div class="roadmap" id="grid">
+<article class="card" data-id="1" data-search="it fundamental komputer hardware software windows linux cmd powershell troubleshooting"><div class="top"><span class="num">1</span><span class="emoji">💻</span></div><h3>IT FUNDAMENTAL</h3><p>Kenali cara kerja komputer dan sistem operasi.</p><ul><li>Hardware dan software</li><li>Dasar Windows dan Linux</li><li>CMD dan PowerShell dasar</li><li>File system dan virtual machine</li><li>Troubleshooting</li></ul><div class="cardfoot"><label class="check"><input type="checkbox" class="done"> Selesai</label><button class="more" data-detail="1">Pelajari →</button></div></article>
+<article class="card" data-id="2" data-search="networking jaringan osi tcp ip dns dhcp http https firewall vpn wifi vlan"><div class="top"><span class="num">2</span><span class="emoji">🌐</span></div><h3>NETWORKING</h3><p>Pahami bagaimana perangkat saling terhubung.</p><ul><li>OSI dan TCP/IP</li><li>IP address, subnet, gateway</li><li>DNS, DHCP, HTTP/HTTPS</li><li>Router, firewall, VPN, Wi-Fi</li><li>VLAN dan konsep port</li></ul><div class="cardfoot"><label class="check"><input type="checkbox" class="done"> Selesai</label><button class="more" data-detail="2">Pelajari →</button></div></article>
+<article class="card" data-id="3" data-search="linux terminal file permission user process service ssh bash scripting"><div class="top"><span class="num">3</span><span class="emoji">🐧</span></div><h3>LINUX</h3><p>Belajar terminal dan mengelola sistem Linux.</p><ul><li>Perintah dasar Linux</li><li>Permission dan user</li><li>Process dan service</li><li>SSH dan koneksi aman</li><li>Bash scripting dasar</li></ul><div class="cardfoot"><label class="check"><input type="checkbox" class="done"> Selesai</label><button class="more" data-detail="3">Pelajari →</button></div></article>
+<article class="card" data-id="4" data-search="security fundamental cia triad authentication encryption hashing mfa access control vulnerability threat risk"><div class="top"><span class="num">4</span><span class="emoji">🛡️</span></div><h3>SECURITY FUNDAMENTAL</h3><p>Prinsip dasar untuk menjaga data dan perangkat.</p><ul><li>CIA Triad</li><li>Autentikasi dan MFA</li><li>Enkripsi dan hashing</li><li>Access control</li><li>Vulnerability, threat, risk</li></ul><div class="cardfoot"><label class="check"><input type="checkbox" class="done"> Selesai</label><button class="more" data-detail="4">Pelajari →</button></div></article>
+<article class="card" data-id="5" data-search="threat awareness cyber attack phishing social engineering malware ransomware password safety incident response"><div class="top"><span class="num">5</span><span class="emoji">🔎</span></div><h3>THREAT AWARENESS</h3><p>Kenali ancaman siber agar mampu mencegahnya.</p><ul><li>Phishing dan social engineering</li><li>Malware dan ransomware</li><li>Risiko kata sandi lemah</li><li>Incident response dasar</li><li>Backup dan pemulihan</li></ul><div class="note">Fokus pada pengenalan ancaman dan pertahanan.</div><div class="cardfoot"><label class="check"><input type="checkbox" class="done"> Selesai</label><button class="more" data-detail="5">Pelajari →</button></div></article>
+<article class="card" data-id="6" data-search="web security html css javascript https cookies session sql injection xss upload"><div class="top"><span class="num">6</span><span class="emoji">🧩</span></div><h3>WEB SECURITY</h3><p>Kenali komponen website dan cara merancang aplikasi aman.</p><ul><li>HTML, CSS, JavaScript</li><li>HTTP request dan response</li><li>Cookie dan session</li><li>Validasi input dan output</li><li>Konsep risiko XSS dan SQL injection</li></ul><div class="note">Latihan hanya di website sendiri atau lab yang mengizinkan.</div><div class="cardfoot"><label class="check"><input type="checkbox" class="done"> Selesai</label><button class="more" data-detail="6">Pelajari →</button></div></article>
+<article class="card" data-id="7" data-search="security tools wireshark logs monitoring vulnerability assessment patch management"><div class="top"><span class="num">7</span><span class="emoji">🧰</span></div><h3>SECURITY TOOLS</h3><p>Kenali alat untuk mengamati jaringan dan kondisi keamanan.</p><ul><li>Wireshark untuk memahami trafik</li><li>Log dan system monitoring</li><li>Vulnerability assessment berizin</li><li>Patch management</li><li>Audit konfigurasi</li></ul><div class="note">Gunakan hanya pada sistem yang kamu miliki atau diizinkan.</div><div class="cardfoot"><label class="check"><input type="checkbox" class="done"> Selesai</label><button class="more" data-detail="7">Pelajari →</button></div></article>
+<article class="card" data-id="8" data-search="blue team log analysis windows event log siem edr ids ips threat intelligence incident response"><div class="top"><span class="num">8</span><span class="emoji">🔵</span></div><h3>BLUE TEAM</h3><p>Fokus pada pemantauan, deteksi, dan respons ancaman.</p><ul><li>Log analysis</li><li>Windows Event Log</li><li>Konsep SIEM dan EDR</li><li>IDS/IPS</li><li>Threat intelligence</li><li>Incident response</li></ul><div class="cardfoot"><label class="check"><input type="checkbox" class="done"> Selesai</label><button class="more" data-detail="8">Pelajari →</button></div></article>
+<article class="card" data-id="9" data-search="automation python bash powershell api tools scripting task automation"><div class="top"><span class="num">9</span><span class="emoji">⚙️</span></div><h3>AUTOMATION</h3><p>Otomatiskan tugas rutin agar pekerjaan lebih konsisten.</p><ul><li>Python dasar dan pemrosesan data</li><li>Bash atau PowerShell</li><li>API dan JSON</li><li>Otomatisasi laporan</li><li>Penjadwalan tugas</li></ul><div class="cardfoot"><label class="check"><input type="checkbox" class="done"> Selesai</label><button class="more" data-detail="9">Pelajari →</button></div></article>
+</div><div id="empty" class="empty">Materi tidak ditemukan. Coba kata kunci lain.</div>
+</section>
+<section><div class="heading"><div><h2>Pilih spesialisasi</h2><p>Setelah memahami dasar, pilih bidang yang ingin didalami.</p></div></div>
+<div class="specs">
+<div class="spec">🔵 <b>Blue Team</b><p>Monitoring, deteksi, dan incident response.</p></div>
+<div class="spec">🔴 <b>Red Team</b><p>Simulasi keamanan yang sah dan terotorisasi.</p></div>
+<div class="spec">🟣 <b>Purple Team</b><p>Kolaborasi pengujian dan pertahanan.</p></div>
+<div class="spec">☁️ <b>Cloud Security</b><p>Keamanan layanan cloud dan identitas.</p></div>
+<div class="spec">📋 <b>GRC</b><p>Governance, risk, compliance, kebijakan.</p></div>
+</div></section>
+<section><div class="heading"><div><h2>Rencana dan kebiasaan belajar</h2><p>Contoh jadwal yang bisa kamu sesuaikan.</p></div></div>
+<div class="cols"><article class="info"><h3>🗓️ Rencana 8 minggu</h3><ul><li>Minggu 1–2: IT Fundamental dan Networking.</li><li>Minggu 3: Linux dan terminal dasar.</li><li>Minggu 4: Security Fundamental.</li><li>Minggu 5–6: Threat Awareness dan Web Security.</li><li>Minggu 7–8: Security Tools, Blue Team, Automation.</li></ul></article>
+<article class="info"><h3>✅ Kebiasaan aman</h3><ul><li>Catat istilah yang belum dipahami.</li><li>Gunakan virtual machine atau lab pribadi.</li><li>Aktifkan MFA dan kata sandi unik.</li><li>Perbarui perangkat dan buat backup.</li><li>Minta izin sebelum menguji sistem.</li></ul></article></div></section>
+<section><div class="heading"><div><h2>Kamus istilah</h2><p>Definisi singkat untuk pemula.</p></div></div>
+<div class="terms"><div class="term"><b>Firewall</b><span>Penyaring lalu lintas jaringan sesuai aturan keamanan.</span></div><div class="term"><b>Encryption</b><span>Mengubah data agar hanya pihak berwenang dapat membacanya.</span></div><div class="term"><b>MFA</b><span>Verifikasi identitas dengan lebih dari satu faktor.</span></div><div class="term"><b>Vulnerability</b><span>Kelemahan sistem yang dapat menimbulkan risiko.</span></div><div class="term"><b>SIEM</b><span>Pengumpulan dan analisis log keamanan.</span></div><div class="term"><b>Incident Response</b><span>Proses menangani insiden keamanan.</span></div></div></section>
+</main>
+<footer><div class="wrap"><b style="color:var(--green)">KAZEDREAM LEARNING HUB</b><p>Roadmap edukasi pemula. Praktik keamanan harus legal, etis, dan memiliki izin yang jelas.</p>© 2026 Kazedream • Belajar, pahami, lindungi.</div></footer>
+<dialog id="dlg"><button class="close" id="close">Tutup ✕</button><h3 id="dlgTitle"></h3><p id="dlgIntro"></p><b>Yang perlu dipahami:</b><ul id="dlgList"></ul></dialog>
+<script>
+const lessons={
+1:["IT Fundamental","Kenali komponen komputer, sistem operasi, file, dan cara menyelesaikan masalah umum.",["Bedakan hardware dan software.","Pelajari CPU, RAM, penyimpanan, dan OS.","Latihan mengelola file dan membaca informasi sistem."]],
+2:["Networking","Pahami konsep jaringan dan alur data antarperangkat.",["Pelajari IP address, router, DNS, dan DHCP.","Pahami HTTP dan HTTPS.","Gambar jaringan rumah sederhana."]],
+3:["Linux","Linux banyak digunakan pada server. Mulailah dengan perintah dasar yang aman.",["Gunakan pwd, ls, cd, mkdir, dan cat.","Pelajari user, grup, dan permission.","Berlatih di perangkat sendiri atau virtual machine."]],
+4:["Security Fundamental","Keamanan informasi menjaga kerahasiaan, keutuhan, dan ketersediaan data.",["Pahami CIA Triad.","Gunakan MFA dan kata sandi unik.","Kenali autentikasi, otorisasi, enkripsi, dan hashing."]],
+5:["Threat Awareness","Kenali ancaman umum untuk menghindari penipuan dan melindungi perangkat.",["Periksa alamat pengirim dan tautan.","Jangan bagikan kode OTP atau kata sandi.","Pelajari backup dan pelaporan insiden."]],
+6:["Web Security","Website memiliki tampilan, logika, dan komunikasi server. Keamanan perlu dirancang sejak awal.",["Pelajari HTML, CSS, dan JavaScript.","Validasi input dan output dengan aman.","Pelajari cookie, session, XSS, dan SQL injection secara defensif."]],
+7:["Security Tools","Alat keamanan membantu mengamati sistem yang memang boleh kamu uji.",["Baca dokumentasi alat.","Mulai dengan trafik jaringan milik sendiri.","Catat temuan dan saran perbaikan."]],
+8:["Blue Team","Blue Team menjaga sistem lewat pemantauan, deteksi, dan respons.",["Kenali log sistem dan Windows Event Log.","Pahami SIEM, EDR, IDS, dan IPS.","Buat alur pelaporan insiden."]],
+9:["Automation","Pemrograman membantu mengurangi tugas berulang dan membuat laporan konsisten.",["Pelajari variabel, kondisi, loop, dan fungsi Python.","Baca file teks atau JSON.","Buat skrip kecil untuk merapikan data sendiri."]]
+};
+const boxes=[...document.querySelectorAll(".done")],fill=document.getElementById("fill");
+function update(){let n=boxes.filter(x=>x.checked).length,p=Math.round(n/9*100);fill.style.width=p+"%";document.getElementById("count").textContent=n+"/9";document.getElementById("progressText").textContent=p+"% selesai — "+n+" dari 9 tahap ditandai selesai.";boxes.forEach(x=>x.closest(".card").classList.toggle("done",x.checked));try{localStorage.setItem("kazedream-progress",JSON.stringify(boxes.map(x=>x.checked)))}catch(e){}}
+try{let old=JSON.parse(localStorage.getItem("kazedream-progress")||"[]");boxes.forEach((x,i)=>x.checked=!!old[i])}catch(e){}update();boxes.forEach(x=>x.addEventListener("change",update));
+document.getElementById("reset").onclick=()=>{if(confirm("Reset semua progres belajar?")){boxes.forEach(x=>x.checked=false);update()}};
+document.getElementById("search").addEventListener("input",e=>{let q=e.target.value.toLowerCase().trim(),n=0;document.querySelectorAll(".card").forEach(c=>{let ok=(c.dataset.search+" "+c.innerText).toLowerCase().includes(q);c.hidden=!ok;if(ok)n++});document.getElementById("empty").style.display=n?"none":"block"});
+const dlg=document.getElementById("dlg");document.querySelectorAll("[data-detail]").forEach(b=>b.onclick=()=>{let x=lessons[b.dataset.detail];document.getElementById("dlgTitle").textContent=x[0];document.getElementById("dlgIntro").textContent=x[1];document.getElementById("dlgList").innerHTML=x[2].map(t=>"<li>"+t+"</li>").join("");dlg.showModal()});
+document.getElementById("close").onclick=()=>dlg.close();dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
+</script>
+</body></html>
